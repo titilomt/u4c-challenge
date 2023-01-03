@@ -1,5 +1,12 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Incidents } from "../incidents/incidents.entity";
+import { Vehicules } from "../vehicules/vehicules.entity";
 
 @Entity()
 export class ThirdParty {
@@ -20,4 +27,7 @@ export class ThirdParty {
 
   @ManyToMany(() => Incidents, (incidents) => incidents.thirdParty)
   incidents!: Incidents[];
+
+  @OneToMany(() => Vehicules, (vehicules) => vehicules.thirdParty)
+  vehicules!: Vehicules[];
 }

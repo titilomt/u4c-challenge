@@ -44,6 +44,15 @@ export default async (server: Server) => {
         params: Joi.object({
           id: Joi.string().required(),
         }),
+        payload: Joi.object({
+          document: Joi.string().required().description("Client document"),
+          name: Joi.string().description("Client name"),
+          driverLicense: Joi.string().description(
+            "Client Driver License number"
+          ),
+          birth: Joi.date().description("Client Birthday date"),
+          phone: Joi.string().description("Client Phone number"),
+        }),
       },
       plugins: {
         "hapi-swagger": {
@@ -67,6 +76,33 @@ export default async (server: Server) => {
       handler: customerController.create,
       tags: ["api", "customers"],
       description: "Create a Customer.",
+      validate: {
+        payload: Joi.object({
+          document: Joi.string().required().description("Client document"),
+          name: Joi.string().required().description("Client name"),
+          driverLicense: Joi.string()
+            .required()
+            .description("Client Driver License number"),
+          birth: Joi.date().description("Client Birthday date"),
+          phone: Joi.string().required().description("Client Phone number"),
+          vehicules: Joi.array()
+            .items({
+              name: Joi.string().required().description("Client Vehicule Name"),
+              year: Joi.string().required().description("Client Vehicule Year"),
+              plate: Joi.string()
+                .required()
+                .description("Client Vehicule Plate"),
+              brand: Joi.string()
+                .required()
+                .description("Client Vehicule Brand"),
+              chassis: Joi.string()
+                .required()
+                .description("Client Vehicule Chassis number"),
+            })
+            .required()
+            .min(1),
+        }),
+      },
       plugins: {
         "hapi-swagger": {
           responses: {

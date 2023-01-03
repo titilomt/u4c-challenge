@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { Customers } from "../customers/customers.entity";
+import { ThirdParty } from "../third-party/third-party.entity";
 
 @Entity()
 export class Vehicules {
@@ -23,4 +24,7 @@ export class Vehicules {
 
   @ManyToOne(() => Customers, (customer) => customer.vehicules)
   customer!: Customers;
+
+  @ManyToOne(() => ThirdParty, (thirdParty) => thirdParty.vehicules)
+  thirdParty!: ThirdParty;
 }

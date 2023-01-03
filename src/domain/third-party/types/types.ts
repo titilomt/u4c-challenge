@@ -1,5 +1,7 @@
+import { CreateVehiculeDto } from "../../vehicules/types/types";
+
 export type ThirdPartyDto = {
-  vehiculePlate: string;
+  vehicule: CreateVehiculeDto;
   name: string;
   document: string;
   phone: string;
@@ -7,7 +9,7 @@ export type ThirdPartyDto = {
 };
 
 export type CreateThirdPartyDto = {
-  vehiculePlate: string;
+  vehicule: CreateVehiculeDto;
   name: string;
   phone: string;
   document: string;
@@ -15,7 +17,6 @@ export type CreateThirdPartyDto = {
 };
 
 export type SearchThirdPartyDto = {
-  vehiculePlate?: string;
   document?: string;
   phone?: string;
   driverLicense?: string;

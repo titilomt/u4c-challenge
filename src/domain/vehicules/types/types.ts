@@ -5,3 +5,8 @@ export type CreateVehiculeDto = {
   brand: string;
   chassis: string;
 };
+
+export type FindVehiculeDto = {
+  plate?: string;
+  chassis?: string;
+};

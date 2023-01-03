@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { Customers } from "../customers/customers.entity";
 import { ThirdParty } from "../third-party/third-party.entity";
+import { Vehicules } from "../vehicules/vehicules.entity";
 
 @Entity()
 export class Incidents {
@@ -23,11 +24,11 @@ export class Incidents {
   @Column()
   customerDocument!: string;
 
-  @Column()
-  customerVehiculePlate!: string;
-
   @Column({ unique: true })
   policeReport!: string;
+
+  @Column({ type: "jsonb", nullable: true })
+  vehiculesInvolved!: Vehicules[];
 
   @ManyToOne(() => Customers, (customers) => customers.incidents)
   customers!: Customers;

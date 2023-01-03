@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  postgresdb:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: u4c
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    volumes:
+      - "{CAMINHO_DA_SUA_MAQUINA_PARA_O_VOLUME}:/var/lib/postgresql/data"

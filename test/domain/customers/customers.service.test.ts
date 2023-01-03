@@ -30,7 +30,7 @@ describe("CustomerService", () => {
   it("Deve atualizar os dados de um cliente e retornar seu novo valor.", async () => {
     const customerService = new CustomerService(customerRepositoryMock);
 
-    const newCustomer = await customerService.update(1, {
+    const newCustomer = await customerService.modify(1, {
       name: "Teste 2",
       document: "12345656788",
       driverLicense: "9922453282",

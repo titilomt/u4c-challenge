@@ -1,4 +1,4 @@
-import { CustomerDto } from "../../../../src/domain/customers/types/types";
+import { CreateCustomerDto } from "../../../../src/domain/customers/types/types";
 import { Customers } from "../../../../src/infra/db/entities/customers/customers.entity";
 import { CustomerData } from "./customers.mock";
 import { VehiculesData } from "./vehicules.mock";
@@ -6,7 +6,7 @@ import { VehiculesData } from "./vehicules.mock";
 export class CustomerRepositoryMock {
   constructor() {}
 
-  async save(customer: CustomerDto): Promise<Customers> {
+  async save(customer: CreateCustomerDto): Promise<Customers> {
     const { id } = CustomerData[CustomerData.length - 1];
     let vehicules: any = [];
 
@@ -41,7 +41,7 @@ export class CustomerRepositoryMock {
     return newCustomer;
   }
 
-  create(customer: CustomerDto | undefined): Customers {
+  create(customer: CreateCustomerDto | undefined): Customers {
     const { id } = CustomerData[CustomerData.length - 1];
     let vehicules: any = [];
 
