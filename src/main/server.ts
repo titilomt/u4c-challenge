@@ -2,6 +2,12 @@
 
 import Hapi, { Server } from "@hapi/hapi";
 
+import Inert from "@hapi/inert";
+import Vision from "@hapi/vision";
+import * as HapiSwagger from "hapi-swagger";
+
+import * as Customers from "../domain/customers";
+
 export let server: Server;
 
 export const init = async function (): Promise<Server> {
@@ -10,7 +16,21 @@ export const init = async function (): Promise<Server> {
     host: "0.0.0.0",
   });
 
+  const swaggerOptions = {
+    info: {
+      title: "Test API Documentation",
+      version: "1.0",
+    },
+  };
+  await server.register([Inert, Vision]);
+
+  await server.register({
+    plugin: HapiSwagger,
+    options: swaggerOptions,
+  });
+
   // Routes will go here
+  Customers.init(server);
 
   return server;
 };

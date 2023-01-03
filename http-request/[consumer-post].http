@@ -1,0 +1,19 @@
+POST http://0.0.0.0:4000/customers HTTP/1.1
+content-type: application/json
+
+{
+    "birth": "2009-01-01",
+    "document": "60676154018",
+    "name": "TESTE 12",
+    "driverLicense": "21779999670",
+    "phone": "0319912121212",
+    "vehicules": [
+        {
+            "name": "Camaro SS",
+            "year": "1997",
+            "plate": "DEF9898",
+            "brand": "GM",
+            "chassis": "734835530116"
+        }
+    ]
+}
